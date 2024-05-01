@@ -14,7 +14,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './screens/Home';
 import Details from './screens/Details';
-import {ContextProviders} from './context/context';
+import {ContextProvider} from './context/context';
 
 export type RootStartParamList = {
   Home: undefined;
@@ -26,7 +26,7 @@ const Stack = createNativeStackNavigator<RootStartParamList>();
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
-      <ContextProviders>
+      <ContextProvider>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             name="Home"
@@ -43,7 +43,7 @@ function App(): React.JSX.Element {
             }}
           />
         </Stack.Navigator>
-      </ContextProviders>
+      </ContextProvider>
     </NavigationContainer>
   );
 }
