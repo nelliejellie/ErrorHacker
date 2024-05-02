@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -11,39 +10,29 @@ import {
   View,
 } from 'react-native';
 
-import {NavigationContainer} from '@react-navigation/native'
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import Home from './screens/Home';
-import Details from './screens/Details';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from './screens/Home/Home';
+import Details from './screens/Home/Details';
+import TabNavigator from './Navigation/TabNavigator';
 
-export type RootStartParamList = {
-  Home: undefined;
-  Details:{productId: string};
-  
-}
-
-const Stack = createNativeStackNavigator<RootStartParamList>()
+const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
- 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
+      <Stack.Navigator initialRouteName="Main">
         <Stack.Screen
-        name='Home'
-        component={Home}
-        options={{
-          title:"Trending Products"
-        }}
+          name="Main"
+          component={TabNavigator}
+          options={{headerShown: false}}
         />
         <Stack.Screen
-        name='Details'
-        component={Details}
-        options={{
-          title:"Products Details"
-        }}
+          name="Details"
+          component={Details}
+          options={{headerShown: false}}
         />
-       
+        {/* Other screens in the stack navigator */}
       </Stack.Navigator>
     </NavigationContainer>
   );

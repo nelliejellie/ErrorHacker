@@ -2,15 +2,11 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStartParamList} from '../App';
 
-type HomeProps = NativeStackScreenProps<RootStartParamList, 'Home'>;
-
-const Home = ({navigation}: HomeProps) => {
+const Home: React.FC = ({navigation}: any) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.smallText}>Home Screen</Text>
-      <Icon name="skip-previous" size={80} />
+    <View>
+      <Text>Home Screen</Text>
       <Button
         title="Go to Details"
         onPress={() =>
