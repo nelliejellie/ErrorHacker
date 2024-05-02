@@ -1,13 +1,19 @@
-import React, {ReactNode, createContext, useContext} from 'react';
+import React, {createContext, useState} from 'react';
 
-const MyContext = createContext(null);
+export const MyContext = createContext();
 
-export const ContextProvider = ({children}: {children: ReactNode}) => {
-  // Data to be shared globally
-  
+export const MyContextProvider = ({children}: any) => {
+  const [appState, setAppState] = useState({
+    user: null,
+  });
 
-  // include value
-  return <MyContext.Provider>{children}</MyContext.Provider>;
+  const updateAppState = (key: string, value: any) => {
+    setAppState(prev => ({...prev, [key]: value}));
+  };
+
+  return (
+    <MyContext.Provider value={{appState, updateAppState}}>
+      {children}
+    </MyContext.Provider>
+  );
 };
-
-export const useMyContext = () => useContext(MyContext);

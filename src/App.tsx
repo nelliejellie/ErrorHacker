@@ -15,14 +15,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './screens/Home/Home';
 import Details from './screens/Home/Details';
 import TabNavigator from './Navigation/TabNavigator';
-import {ContextProvider} from './context/context';
+import {MyContextProvider} from './context/context';
 
 const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
-      <ContextProvider>
+      <MyContextProvider>
         <Stack.Navigator initialRouteName="Main">
           <Stack.Screen
             name="Main"
@@ -36,7 +36,7 @@ function App(): React.JSX.Element {
           />
           {/* Other screens in the stack navigator */}
         </Stack.Navigator>
-      </ContextProvider>
+      </MyContextProvider>
     </NavigationContainer>
   );
 }
