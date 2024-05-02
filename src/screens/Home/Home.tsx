@@ -1,25 +1,17 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStartParamList} from '../App';
 
-type HomeProps = NativeStackScreenProps<RootStartParamList, 'Home'>;
-
-const Home = ({navigation}: HomeProps) => {
+const Home: React.FC = ({navigation}: any) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.smallText}>Home Screen</Text>
+    <View>
+      <Text>Home Screen</Text>
       <Button
         title="Go to Details"
-        // onPress={() => navigation.navigate("Details",{
-        //   productId:"86"
-        // })}
-        // onPress={() => navigation.navigate("Details")}
-
         onPress={() =>
           navigation.push('Details', {
-            productId: '86'
+            productId: '86',
           })
         }
       />
