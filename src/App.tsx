@@ -12,38 +12,31 @@ import {
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from './screens/Home';
-import Details from './screens/Details';
-import {ContextProvider} from './context/context';
+import Home from './screens/Home/Home';
+import Details from './screens/Home/Details';
+import TabNavigator from './Navigation/TabNavigator';
+import {MyContextProvider} from './context/context';
 
-export type RootStartParamList = {
-  Home: undefined;
-  Details: {productId: string};
-};
-
-const Stack = createNativeStackNavigator<RootStartParamList>();
+const Stack = createNativeStackNavigator();
 
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
-      <ContextProvider>
-        <Stack.Navigator initialRouteName="Home">
+      <MyContextProvider>
+        <Stack.Navigator initialRouteName="Main">
           <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{
-              title: 'Trending Products',
-            }}
+            name="Main"
+            component={TabNavigator}
+            options={{headerShown: false}}
           />
           <Stack.Screen
             name="Details"
             component={Details}
-            options={{
-              title: 'Products Details',
-            }}
+            options={{headerShown: false}}
           />
+          {/* Other screens in the stack navigator */}
         </Stack.Navigator>
-      </ContextProvider>
+      </MyContextProvider>
     </NavigationContainer>
   );
 }
